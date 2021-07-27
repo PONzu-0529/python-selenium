@@ -1,0 +1,26 @@
+{
+	"name": "python-selenium",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+	],
+	"service": "python",
+	"workspaceFolder": "/python-selenium",
+	"extensions": [
+		"christian-kohler.path-intellisense",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"humao.rest-client",
+		"ms-azuretools.vscode-docker",
+		"ms-ceintl.vscode-language-pack-ja",
+		"ms-python.python",
+		"oderwat.indent-rainbow",
+		"pkief.material-icon-theme",
+		"shardulm94.trailing-spaces",
+		"sirtori.indenticator",
+		"streetsidesoftware.code-spell-checker",
+		"visualstudioexptteam.vscodeintellicode",
+		"vscode-icons-team.vscode-icons",
+		"redhat.vscode-yaml",
+	],
+	// "shutdownAction": "none",
+}
