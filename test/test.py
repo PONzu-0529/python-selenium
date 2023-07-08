@@ -1,4 +1,5 @@
 import os
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -9,6 +10,7 @@ def main():
 
     option = Options()
 
+    option.add_argument('--headless')
     option.add_argument('--mute-audio')
     option.add_argument('--no-sandbox')
     option.add_argument('--disable-gpu')
@@ -25,7 +27,7 @@ def main():
 
         driver.get('https://github.com/PONzu-0529/python-selenium')
 
-        input('Press Enter...')
+        driver.save_screenshot("output_%s.png" % int(time.time()))
 
     except Exception as e:
 
