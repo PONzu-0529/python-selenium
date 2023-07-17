@@ -3,14 +3,38 @@ require_once('vendor/autoload.php'); // Selenium WebDriverのライブラリを�
 
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\DriverCommand;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
-use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverWait;
 
+class CustomRemoteWebDriver extends RemoteWebDriver
+{
+    /**
+     * Override Method
+     * Find the first WebDriverElement using the given mechanism.
+     *
+     * @param WebDriverBy $by
+     * @return RemoteWebElement NoSuchElementException is thrown in
+     *    HttpCommandExecutor if no element is found.
+     * @see WebDriverBy
+     */
+    public function findElement(WebDriverBy $by)
+    {
+        $params = ['using' => $by->getMechanism(), 'value' => $by->getValue()];
+        $raw_element = $this->execute(
+            DriverCommand::FIND_ELEMENT,
+            $params
+        );
+
+        // return $this->newElement($raw_element['ELEMENT']);
+        return $this->newElement(current($raw_element));
+    }
+}
+
 // WebDriverのセットアップ
-$host = 'http://' . getenv('SELENIUM_GRID_HOST') . ':4444'; // Selenium Serverのホストとポート
+$host = 'http://15.152.35.188:4444'; // Selenium Serverのホストとポート
 
 $options = new ChromeOptions();
 $options->addArguments([
@@ -24,7 +48,7 @@ $options->setExperimentalOption('excludeSwitches', ['enable-logging']);
 $capabilities = DesiredCapabilities::chrome();
 $capabilities->setCapability(ChromeOptions::CAPABILITY, $options);
 
-$driver = RemoteWebDriver::create($host, $capabilities);
+$driver = CustomRemoteWebDriver::create($host, $capabilities);
 
 function waitForElement($driver, $locator)
 {
