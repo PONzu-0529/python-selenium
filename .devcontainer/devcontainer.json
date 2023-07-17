@@ -1,11 +1,11 @@
 {
-	"name": "python-selenium",
+	"name": "selenium",
 	"dockerComposeFile": [
 		"../docker-compose.yml",
 	],
-	"service": "python",
-	"workspaceFolder": "/python-selenium",
+	"service": "php",
 	"extensions": [
+		"bmewburn.vscode-intelephense-client", // PHP Intelephense
 		"christian-kohler.path-intellisense",
 		"donjayamanne.githistory",
 		"eamodio.gitlens",
@@ -13,6 +13,7 @@
 		"ms-azuretools.vscode-docker",
 		"ms-ceintl.vscode-language-pack-ja",
 		"ms-python.python",
+		"neilbrayfield.php-docblocker", // PHP DocBlocker
 		"oderwat.indent-rainbow",
 		"pkief.material-icon-theme",
 		"shardulm94.trailing-spaces",
@@ -21,6 +22,9 @@
 		"visualstudioexptteam.vscodeintellicode",
 		"vscode-icons-team.vscode-icons",
 		"redhat.vscode-yaml",
+		"wmaurer.change-case", // change-case
 	],
 	// "shutdownAction": "none",
+	// "workspaceFolder": "/python-selenium",
+	"workspaceFolder": "/var/www/html"
 }

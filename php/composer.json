@@ -1,0 +1,6 @@
+{
+    "name": "ec2-user/php",
+    "require": {
+        "facebook/webdriver": "^1.7"
+    }
+}
